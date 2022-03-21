@@ -5,7 +5,8 @@ from pprint import pprint
 def get_user(name, occupation, dynamodb=None):
     if not dynamodb:
         dynamodb = boto3.resource(
-            'dynamodb', endpoint_url="http://localhost:8000")
+            #'dynamodb', endpoint_url="http://localhost:8000")
+            'dynamodb', region_name="us-east-1")
  
     table = dynamodb.Table('Users')
  

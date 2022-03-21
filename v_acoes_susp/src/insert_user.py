@@ -4,7 +4,8 @@ from pprint import pprint
 def put_user(name, occupation, hobby, dynamodb=None):
     if not dynamodb:
         dynamodb = boto3.resource(
-            'dynamodb', endpoint_url="http://localhost:8000")
+            #'dynamodb', endpoint_url="http://localhost:8000")
+            'dynamodb', region_name="us-east-1")
  
     table = dynamodb.Table('Users')
     response = table.put_item(

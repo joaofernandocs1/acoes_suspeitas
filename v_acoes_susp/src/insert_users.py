@@ -3,7 +3,8 @@ import boto3
 def load_users(users, dynamodb=None):
     if not dynamodb:
         dynamodb = boto3.resource(
-            'dynamodb', endpoint_url="http://localhost:8000")
+            #'dynamodb', endpoint_url="http://localhost:8000")
+            'dynamodb', region_name="us-east-1")
  
     table = dynamodb.Table('Users')
     for user in users:
