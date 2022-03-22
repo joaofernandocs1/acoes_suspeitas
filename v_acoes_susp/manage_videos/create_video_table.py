@@ -14,7 +14,7 @@ def create_users_table(dynamodb=None):
                 'KeyType': 'HASH'  # Partition key
             },
             {
-                'AttributeName': 'local',
+                'AttributeName': 'duracao',
                 'KeyType': 'RANGE'  # Sort key
             }
         ],
@@ -24,7 +24,7 @@ def create_users_table(dynamodb=None):
                 'AttributeType': 'S'
             },
             {
-                'AttributeName': 'local',
+                'AttributeName': 'duracao',
                 'AttributeType': 'S'
             }
         ],
