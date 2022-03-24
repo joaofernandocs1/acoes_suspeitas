@@ -10,12 +10,17 @@ def msc_to_df(count_videos):
 
     return msc_df[0:count_videos]
 
-def gen_df_to_upload(df_from_msc):
+def append_into_msc_df(videos_url_list, video_files_list, df_to_join):
 
-    return
+    # adiciona a lista de nomes dos arquivos de video como uma nova coluna ao dataframe
+    df_to_join['arquivo'] = video_files_list
+    # adiciona a lista de urls de cada video como uma nova coluna ao dataframe
+    df_to_join['url'] = videos_url_list
+
+    return df_to_join
 
 if __name__ == '__main__':
 
-    count_videos = 2
+    count_videos = 2  # teste
 
-    print(msc_to_df(count_videos))
+    df_to_insert_urls = msc_to_df(count_videos)

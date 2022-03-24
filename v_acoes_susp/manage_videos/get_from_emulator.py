@@ -9,7 +9,10 @@ def get_videos_from_emulator(path_from, path_to):
     os.system(command)
 
 def copy_to_modules_path():
-    
+
+    # funcao para copiar da pasta "video/" criada ao fazer o adb pull para a pasta dos modulos
+
+    return
 
 if __name__ == '__main__':
 
