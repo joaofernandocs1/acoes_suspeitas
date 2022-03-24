@@ -2,8 +2,11 @@ import boto3
 from pprint import pprint
 from botocore.exceptions import ClientError
 from decimal import Decimal
- 
-def insert_video(number, duracao, data, id_local, nome_local, nome_arquivo, dynamodb=None):
+
+# INPUT: 
+# OUTPUT: 
+
+def insert_video(number, duracao, data, id_local, nome_local, nome_arquivo, url, dynamodb=None):
     if not dynamodb:
         dynamodb = boto3.resource(
             #'dynamodb', endpoint_url="http://localhost:8000")
@@ -17,11 +20,12 @@ def insert_video(number, duracao, data, id_local, nome_local, nome_arquivo, dyna
             'data': data,
             'id_local': id_local,
             'nome_local': nome_local,
-            'nome_arquivo': nome_arquivo
+            'nome_arquivo': nome_arquivo,
+            'url': url
         }
     )
     return response
-
+'''
 # deletar video no db (MUDAR DE USUARIO PARA VIDEO)
 def delete_user(name, occupation, dynamodb=None):
     if not dynamodb:
@@ -65,6 +69,22 @@ def update_user(name, occupation, hobby, dynamodb=None):
     )
     return response
 
+    # consultar um video no db (MUDAR DE USUARIO PARA VIDEO)
+    def get_user(name, occupation, dynamodb=None):
+    if not dynamodb:
+        dynamodb = boto3.resource(
+            #'dynamodb', endpoint_url="http://localhost:8000")
+            'dynamodb', region_name="us-east-1")
+ 
+    table = dynamodb.Table('Users')
+ 
+    try:
+        response = table.get_item(Key={'name': name, 'occupation': occupation})
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+    else:
+        return response['Item']'''
+
 if __name__ == '__main__':
 
     # inserir video no db
@@ -82,3 +102,9 @@ if __name__ == '__main__':
     '''update_response = update_user("Thamires", "Student", "Read books")
     print("Update user succeeded:")
     pprint(update_response, sort_dicts=False)'''
+
+    # consultar
+    user = get_user("Thamires", "Student")
+    if user:
+        print("Get user succeeded:")
+        pprint(user, sort_dicts=False)

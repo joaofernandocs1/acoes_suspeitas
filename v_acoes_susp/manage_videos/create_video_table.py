@@ -1,5 +1,8 @@
 import boto3
- 
+
+# INPUT: 
+# OUTPUT: 
+
 def create_users_table(dynamodb=None):
     if not dynamodb:
         dynamodb = boto3.resource(
@@ -29,8 +32,8 @@ def create_users_table(dynamodb=None):
             }
         ],
         ProvisionedThroughput={
-            'ReadCapacityUnits': 4, # colunas que podem ser acrescentadas sem ter sido declaradas na criação da tabela
-            'WriteCapacityUnits': 4 # colunas que podem ser acrescentadas sem ter sido declaradas na criação da tabela
+            'ReadCapacityUnits': 5, # colunas que podem ser acrescentadas sem ter sido declaradas na criação da tabela
+            'WriteCapacityUnits': 5 # colunas que podem ser acrescentadas sem ter sido declaradas na criação da tabela
         }
     )
     return table
