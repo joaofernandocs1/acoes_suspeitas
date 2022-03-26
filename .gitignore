@@ -132,4 +132,5 @@ dmypy.json
 instalaveis/
 Include/
 Lib/
-Scripts/
+secret/
+videos/
